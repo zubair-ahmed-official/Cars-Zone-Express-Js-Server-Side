@@ -48,7 +48,7 @@ async function run() {
             const limit = parseInt(req.query.limit) || 20;
             const skip = page * limit;
 
-            const sortField = req.query.sortField || price;
+            const sortField = req.query.sortField || 'price';
             const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
 
             const result = await toyCollection.find(query).sort({ [sortField]: sortOrder }).skip(skip).limit(limit).toArray();
@@ -124,7 +124,7 @@ async function run() {
         })
 
         // await client.db("admin").command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        // console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error
         // await client.close();
